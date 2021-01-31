@@ -17,15 +17,16 @@ func _process(delta):
 		position.x -= SPEED
 	
 	
-func set_sprite_type(name="CAVE"):
-	$Sprite.hide()
-	$Sprite2.hide()
-	if name == "CAVE": 
-		$Sprite.show()
-		$Grass.hide()
+func set_sprite_type(name="ROCK"):
+	$Rock.hide()
+	$Root.hide()
+	$Log.hide()
+	if name == "ROCK": 
+		$Rock.show()
+	elif name == "ROOT": 
+		$Root.show()
 	else:
-		$Sprite2.show()
-		$Grass.show()
+		$Log.show()
 
 	
 func set_static():

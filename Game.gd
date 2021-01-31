@@ -108,6 +108,14 @@ func _on_Player_game_start():
 	bar_interval = $Timer.wait_time / num_time_bar
 	level_start = true
 	
+	#StartSpawnStaggered
+	$C2/EnviGenerator/SpawnTimer.start()
+	yield(get_tree().create_timer(3.5), "timeout")
+	$C2/ObstacleGenerator/SpawnTimer.start()
+	yield(get_tree().create_timer(3), "timeout")
+	$C2/BatGenerator/SpawnTimer.start()
+	
+	
 
 func _on_Timer_timeout():
 	if not game_over:

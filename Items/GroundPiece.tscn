@@ -1,11 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://assets/items/192-128-max.png" type="Texture" id=1]
 [ext_resource path="res://Items/GroundPiece.gd" type="Script" id=2]
+
+[sub_resource type="TileSet" id=2]
+0/name = "192-128-max.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 96, 192, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 16 )
 
 [node name="GroundPiece" type="RigidBody2D"]
+collision_layer = 9
 mode = 1
 script = ExtResource( 2 )
 
@@ -16,6 +34,14 @@ position = Vector2( 32, 0 )
 
 [node name="Sprite3" type="Sprite" parent="."]
 position = Vector2( 64, 0 )
+
+[node name="Grass" type="TileMap" parent="."]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65537, 0, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 32, 0 )

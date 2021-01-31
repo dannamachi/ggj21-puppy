@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_SpawnTimer_timeout():
-	$SpawnTimer.wait_time = 5 + rand_range(-2.0, 2.0)
+	$SpawnTimer.wait_time = 3 + rand_range(-0.3, 2.3)
 	
 	var rock
 	if randi() % 3 == 0:

@@ -19,11 +19,15 @@ func _ready():
 func set_static():
 	is_static = true
 	
-func set_sprite_type(name="CAVE"):
-	if name in sprite_dict:
-		$Sprite.texture = sprite_dict[name]
-		$Sprite2.texture = sprite_dict[name]
-		$Sprite3.texture = sprite_dict[name]
+func set_sprite_type(Sname="CAVE"):
+	if Sname in sprite_dict:
+		$Sprite.texture = sprite_dict[Sname]
+		$Sprite2.texture = sprite_dict[Sname]
+		$Sprite3.texture = sprite_dict[Sname]
+		if Sname == "FOREST":
+			$Grass.show()
+		else:
+			$Grass.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

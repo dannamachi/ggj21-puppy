@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=1]
 [ext_resource path="res://assets/items/monster_run_V1.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Items/Rock.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/wall/transition.png" type="Texture" id=15]
 [ext_resource path="res://fonts/Sanitrixie.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Items/EnviGenerator.gd" type="Script" id=17]
+[ext_resource path="res://Items/Random.tscn" type="PackedScene" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -176,6 +178,22 @@ position = Vector2( -160, 80 )
 [node name="GroundPiece10" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
 position = Vector2( -64, 80 )
 
+[node name="EnviGenerator" type="Node2D" parent="C2"]
+script = ExtResource( 17 )
+Random = ExtResource( 18 )
+
+[node name="SpawnPoint" type="Position2D" parent="C2/EnviGenerator"]
+position = Vector2( 664, 256 )
+
+[node name="SpawnPoint2" type="Position2D" parent="C2/EnviGenerator"]
+position = Vector2( 824, 272 )
+
+[node name="SpawnTimer" type="Timer" parent="C2/EnviGenerator"]
+wait_time = 6.0
+
+[node name="Random" parent="C2/EnviGenerator" instance=ExtResource( 18 )]
+position = Vector2( 664, 256 )
+
 [node name="ObstacleGenerator" type="Node2D" parent="C2"]
 script = ExtResource( 6 )
 Rock = ExtResource( 14 )
@@ -189,7 +207,6 @@ position = Vector2( 824, 272 )
 
 [node name="SpawnTimer" type="Timer" parent="C2/ObstacleGenerator"]
 wait_time = 2.0
-autostart = true
 
 [node name="Monster" type="AnimatedSprite" parent="C2"]
 position = Vector2( 136, 168 )
@@ -207,7 +224,6 @@ wait_time = 0.2
 
 [node name="SpawnTimer" type="Timer" parent="C2/BatGenerator"]
 wait_time = 4.0
-autostart = true
 
 [node name="Path2D" type="Path2D" parent="C2/BatGenerator"]
 curve = SubResource( 8 )
@@ -295,6 +311,7 @@ one_shot = true
 wait_time = 4.2
 one_shot = true
 [connection signal="timeout" from="C2/GroundGenerator/SpawnTimer" to="C2/GroundGenerator" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="C2/EnviGenerator/SpawnTimer" to="C2/EnviGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="C2/ObstacleGenerator/SpawnTimer" to="C2/ObstacleGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="game_start" from="C2/Player" to="." method="_on_Player_game_start"]
 [connection signal="timeout" from="C2/BatGenerator/QueueTimer" to="C2/BatGenerator" method="_on_QueueTimer_timeout"]
