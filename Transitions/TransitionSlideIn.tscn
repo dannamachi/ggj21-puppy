@@ -28,7 +28,7 @@ tracks/0/keys = {
 material = SubResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
-rect_scale = Vector2( 15.955, 9.03731 )
+rect_scale = Vector2( 16.0814, 9.19605 )
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
