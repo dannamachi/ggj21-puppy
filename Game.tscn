@@ -242,10 +242,6 @@ one_shot = true
 [node name="SwitchTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
-
-[node name="GroundSwitchTimer" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
 [connection signal="timeout" from="C2/GroundGenerator/SpawnTimer" to="C2/GroundGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="C2/ObstacleGenerator/SpawnTimer" to="C2/ObstacleGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="game_start" from="C2/Player" to="." method="_on_Player_game_start"]
@@ -256,4 +252,3 @@ one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]
 [connection signal="timeout" from="SwitchTimer" to="." method="_on_SwitchTimer_timeout"]
-[connection signal="timeout" from="GroundSwitchTimer" to="." method="_on_GroundSwitchTimer_timeout"]

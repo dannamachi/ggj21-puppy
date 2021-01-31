@@ -76,6 +76,8 @@ func _on_SwitchTimer_timeout():
 	$C1/TransitionSlideOut.show()
 	$C1/TransitionSlideOut/AnimationPlayer.play("run")
 	yield($C1/TransitionSlideOut/AnimationPlayer, "animation_finished")
+	$C2/GroundGenerator.ground_type = "FOREST"
+	$C2/BatGenerator.sprite_type = "OWL"
 	$C1/TransitionSlideIn.show()
 	$ParallaxBackground/ParallaxLayerCave.hide()
 	$ParallaxBackground/ParallaxLayerForest.show()
@@ -85,9 +87,4 @@ func _on_SwitchTimer_timeout():
 	yield($C1/TransitionSlideIn/AnimationPlayer, "animation_finished")
 	$C1/TransitionSlideIn.hide()
 	$C1/TransitionSlideIn/AnimationPlayer.play_backwards("run")
-	$GroundSwitchTimer.start()
 
-
-func _on_GroundSwitchTimer_timeout():
-	$C2/GroundGenerator.ground_type = "FOREST"
-	$C2/BatGenerator.sprite_type = "OWL"
