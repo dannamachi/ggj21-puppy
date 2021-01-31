@@ -8,6 +8,8 @@ var bar_interval = 0
 var time_left = 0
 var level_start = false
 var progressText = "%d km left"
+var is_switching = false
+var stop_playing_cave = false
 
 var threshold_time_list = [
 	60,
@@ -61,7 +63,15 @@ func stop_game():
 func _process(delta):
 	#MoveBackGround
 	if not $C2/Player.is_static:
-		$ParallaxBackground.scroll_offset.x -= ($C2/Player.base_displacement + $C2/Player.velocity.x * $C2/Player.BACKGROUND_OFFSET_MULT) * delta
+		if not stop_playing_cave:
+			$ParallaxBackground.scroll_offset.x -= ($C2/Player.base_displacement + $C2/Player.velocity.x * $C2/Player.BACKGROUND_OFFSET_MULT) * delta
+	
+		#MoveTransitionBackground
+		if is_switching:
+			$TransitionAddon.scroll_offset.x -= ($C2/Player.base_displacement + $C2/Player.velocity.x * $C2/Player.BACKGROUND_OFFSET_MULT) * delta
+			if $TransitionAddon.scroll_offset.x < -1700 and not stop_playing_cave:
+				$TransitionAddon/ParallaxLayerForest2.show()
+				stop_playing_cave = true
 	#ShowProgress
 	if level_start:
 		if not game_over:
@@ -102,19 +112,20 @@ func _on_Timer_timeout():
 
 
 func _on_SwitchTimer_timeout():
-	$C1/TransitionSlideOut.show()
-	$C1/TransitionSlideOut/AnimationPlayer.play("run")
-	yield($C1/TransitionSlideOut/AnimationPlayer, "animation_finished")
+#	$C1/TransitionSlideOut.show()
+#	$C1/TransitionSlideOut/AnimationPlayer.play("run")
+#	yield($C1/TransitionSlideOut/AnimationPlayer, "animation_finished")
+	is_switching = true
 	$C2/GroundGenerator.ground_type = "FOREST"
 	$C2/BatGenerator.sprite_type = "OWL"
 	$C2/ObstacleGenerator.sprite_type = "FOREST"
-	$C1/TransitionSlideIn.show()
-	$ParallaxBackground/ParallaxLayerCave.hide()
-	$ParallaxBackground/ParallaxLayerForest.show()
-	$C1/TransitionSlideOut.hide()
-	$C1/TransitionSlideOut/AnimationPlayer.play_backwards("run")
-	$C1/TransitionSlideIn/AnimationPlayer.play("run")
-	yield($C1/TransitionSlideIn/AnimationPlayer, "animation_finished")
-	$C1/TransitionSlideIn.hide()
-	$C1/TransitionSlideIn/AnimationPlayer.play_backwards("run")
+#	$C1/TransitionSlideIn.show()
+#	$ParallaxBackground/ParallaxLayerCave.hide()
+#	$ParallaxBackground/ParallaxLayerForest.show()
+#	$C1/TransitionSlideOut.hide()
+#	$C1/TransitionSlideOut/AnimationPlayer.play_backwards("run")
+#	$C1/TransitionSlideIn/AnimationPlayer.play("run")
+#	yield($C1/TransitionSlideIn/AnimationPlayer, "animation_finished")
+#	$C1/TransitionSlideIn.hide()
+#	$C1/TransitionSlideIn/AnimationPlayer.play_backwards("run")
 

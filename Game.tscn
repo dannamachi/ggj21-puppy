@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=1]
 [ext_resource path="res://assets/items/monster_run_V1.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/wall/GameJamCavePan.png" type="Texture" id=12]
 [ext_resource path="res://Transitions/TransitionSlideOut.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/Rock.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/wall/transition.png" type="Texture" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -75,19 +76,6 @@ layer = 1
 scale = Vector2( 0.5, 0.5 )
 transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 
-[node name="ParallaxLayerForest" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2( 1, 0 )
-motion_mirroring = Vector2( 2564, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerForest"]
-position = Vector2( -1.52588e-05, -7.62939e-06 )
-scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 2564, 288 )
-
 [node name="ParallaxLayerCave" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1, 0 )
 motion_mirroring = Vector2( 2564, 0 )
@@ -99,6 +87,34 @@ texture = ExtResource( 12 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2564, 288 )
+
+[node name="TransitionAddon" type="ParallaxBackground" parent="."]
+layer = 1
+scale = Vector2( 0.5, 0.5 )
+transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
+
+[node name="ParallaxLayerForest2" type="ParallaxLayer" parent="TransitionAddon"]
+visible = false
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 2564, 0 )
+
+[node name="Sprite" type="Sprite" parent="TransitionAddon/ParallaxLayerForest2"]
+position = Vector2( 0.00012207, 0 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2564, 288 )
+
+[node name="ParallaxLayerForest" type="ParallaxLayer" parent="TransitionAddon"]
+motion_scale = Vector2( 1, 0 )
+
+[node name="Sprite" type="Sprite" parent="TransitionAddon/ParallaxLayerForest"]
+position = Vector2( 1280, 0 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 15 )
+centered = false
+region_rect = Rect2( 0, 0, 720, 288 )
 
 [node name="C1" type="CanvasLayer" parent="."]
 
