@@ -10,6 +10,7 @@ var op3 = preload("res://Cutscenes/CutsceneC.tscn")
 var op4 = preload("res://Cutscenes/CutsceneD.tscn")
 var op5 = preload("res://Cutscenes/CutsceneE.tscn")
 var op6 = preload("res://Cutscenes/CutsceneF.tscn")
+var op7 = preload("res://Cutscenes/CutsceneG.tscn")
 
 var cutArr = {
 	"Opening1"     : op1,
@@ -17,7 +18,8 @@ var cutArr = {
 	"Opening3"     : op3,
 	"Opening4"     : op4,
 	"Opening5"     : op5,
-	"Ending"       : op6
+	"Ending"       : op6,
+	"PreEnding"    : op7
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -101,6 +103,8 @@ func on_end_from_cuts(cutName):
 		switch_to_cutscene("Opening5")
 	elif cutName == "Opening5":
 		switch_to_game()
+	elif cutName == "PreEnding":
+		switch_to_cutscene("Ending")
 	else:
 		switch_to_menu()
 
@@ -116,7 +120,7 @@ func on_game_end(gameResult):
 	#WinGame
 	if not gameResult:
 		#GameFlow
-		switch_to_cutscene("Ending")
+		switch_to_cutscene("PreEnding")
 	#LoseGame
 	else:
 		switch_to_over()
