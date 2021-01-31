@@ -15,7 +15,7 @@ export var LEVEL_TIME = 60
 func _ready():
 	$Timer.wait_time = LEVEL_TIME
 	time_left = $Timer.wait_time
-	$C2/Player.set_init_freeze()
+	$C2/Monster.play()
 	
 	
 func stop_game():

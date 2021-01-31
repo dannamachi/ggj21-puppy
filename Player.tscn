@@ -136,7 +136,3 @@ animation = "standing"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 6 )
 shape = SubResource( 18 )
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

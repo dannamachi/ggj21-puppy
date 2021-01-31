@@ -37,11 +37,6 @@ export var BACKGROUND_OFFSET_MULT = 0.001
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("flying")
-
-
-func set_init_freeze():
-	is_static = true
-	$Timer.start()
 	
 
 func on_being_hit():
@@ -157,7 +152,3 @@ func _on_HighZone_body_entered(body):
 
 func _on_HighZone_body_exited(body):
 	high_force = 1.0
-
-
-func _on_Timer_timeout():
-	is_static = false
