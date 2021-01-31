@@ -3,7 +3,6 @@ extends Node2D
 export (PackedScene) var Menu
 export (PackedScene) var Game
 export (PackedScene) var GameOver
-export (PackedScene) var CutsceneA
 
 var cuts1 = preload("res://Cutscenes/CutsceneA.tscn")
 
