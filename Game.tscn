@@ -224,16 +224,6 @@ shape = SubResource( 4 )
 
 [node name="Display" type="Node2D" parent="C2"]
 
-[node name="Cover" type="ColorRect" parent="C2/Display"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-rect_scale = Vector2( 15.9892, 9.1057 )
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ColorRect" type="ColorRect" parent="C2/Display"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -278,10 +268,6 @@ __meta__ = {
 wait_time = 60.0
 one_shot = true
 
-[node name="WinTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="SwitchTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
@@ -293,5 +279,4 @@ one_shot = true
 [connection signal="body_entered" from="C2/HighZone" to="C2/Player" method="_on_HighZone_body_entered"]
 [connection signal="body_exited" from="C2/HighZone" to="C2/Player" method="_on_HighZone_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]
 [connection signal="timeout" from="SwitchTimer" to="." method="_on_SwitchTimer_timeout"]

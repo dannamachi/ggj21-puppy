@@ -20,16 +20,16 @@ func _ready():
 	
 func stop_game():
 	$Timer.stop()
-	$WinTimer.start()
-	$C2/BatGenerator/SpawnTimer.stop()
-	$C2/GroundGenerator/SpawnTimer.stop()
-	$C2/BatGenerator/SpawnTimer.stop()
-	$C2/BatGenerator/QueueTimer.stop()
-	for i in $C2/GroundGenerator.get_children():
-		if "GroundPiece" in i.name: i.set_static()
-	for i in $C2/ObstacleGenerator.get_children():
-		if "Rock" in i.name: i.set_static()
-	$C2/Player.set_static()
+#	$C2/BatGenerator/SpawnTimer.stop()
+#	$C2/GroundGenerator/SpawnTimer.stop()
+#	$C2/BatGenerator/SpawnTimer.stop()
+#	$C2/BatGenerator/QueueTimer.stop()
+#	for i in $C2/GroundGenerator.get_children():
+#		if "GroundPiece" in i.name: i.set_static()
+#	for i in $C2/ObstacleGenerator.get_children():
+#		if "Rock" in i.name: i.set_static()
+#	$C2/Player.set_static()
+	emit_signal("game_end", game_over)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,8 +38,7 @@ func _process(delta):
 		if not game_over:
 			if $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
 				game_over = true
-				$C2/Display/Cover.show()
-				$C2/Display/FancyText.bbcode_text = "[center]GAME OVER[/center]"
+				$C2/Display/FancyText.bbcode_text = "[center]NOOOOO~[/center]"
 				stop_game()
 			
 		if not game_over: time_left = $Timer.get_time_left()
@@ -62,14 +61,8 @@ func _on_Player_game_start():
 
 func _on_Timer_timeout():
 	if not game_over:
-		$C2/Display/Cover.show()
-		$C2/Display/FancyText.bbcode_text = "[center]YOU WIN[/center]"
+		$C2/Display/FancyText.bbcode_text = "[center]I'M HERE!!![/center]"
 		stop_game()
-
-
-func _on_WinTimer_timeout():
-	#WinPlaceHolder
-	emit_signal("game_end", game_over)
 
 
 func _on_SwitchTimer_timeout():
