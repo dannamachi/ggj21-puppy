@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GroundPiece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/wall/hCUwLQ.png" type="Texture" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BigRock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CutsceneA.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "BackOff"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 296, 304 ), Vector2( 336, 264 ), Vector2( 368, 248 ), Vector2( 400, 304 ), Vector2( 424, 272 ), Vector2( 424, 304 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Enter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 696, 304 ), Vector2( 296, 304 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "DropDown"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 2.2, 2.7, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 96, -72 ), Vector2( 96, 288 ), Vector2( 96, 176 ), Vector2( 96, 288 ), Vector2( 96, 264 ), Vector2( 96, 288 ) ]
+}
+
+[node name="CutsceneA" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -88.0
+margin_top = -120.0
+margin_right = 1352.0
+margin_bottom = 360.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Decors" type="Node2D" parent="."]
+position = Vector2( -32, -8 )
+
+[node name="GroundPiece" parent="Decors" instance=ExtResource( 1 )]
+position = Vector2( 32, 360 )
+
+[node name="GroundPiece2" parent="Decors" instance=ExtResource( 1 )]
+position = Vector2( 160, 360 )
+
+[node name="GroundPiece3" parent="Decors" instance=ExtResource( 1 )]
+position = Vector2( 296, 360 )
+
+[node name="GroundPiece4" parent="Decors" instance=ExtResource( 1 )]
+position = Vector2( 432, 360 )
+
+[node name="GroundPiece5" parent="Decors" instance=ExtResource( 1 )]
+position = Vector2( 568, 360 )
+
+[node name="GroundPiece6" parent="Decors" instance=ExtResource( 1 )]
+position = Vector2( 696, 360 )
+
+[node name="Actors" type="Node2D" parent="."]
+position = Vector2( 48, -16 )
+
+[node name="Player" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( 296, 304 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/Player"]
+anims/BackOff = SubResource( 1 )
+anims/Enter = SubResource( 2 )
+
+[node name="BigRock" parent="Actors" instance=ExtResource( 4 )]
+position = Vector2( 96, -72 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Actors/BigRock"]
+anims/DropDown = SubResource( 3 )
+
+[node name="Display" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Display"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 16.0142, 0.702249 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Display"]
+margin_top = 336.0
+margin_right = 40.0
+margin_bottom = 376.0
+rect_scale = Vector2( 16.0142, 0.702249 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Display"]
+margin_top = 336.0
+margin_right = 640.0
+margin_bottom = 366.0
+text = "*pant* *pant*"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
