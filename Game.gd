@@ -34,6 +34,10 @@ func stop_game():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#MoveBackGround
+	if not $C2/Player.is_static:
+		$ParallaxBackground.scroll_offset.x -= ($C2/Player.base_displacement + $C2/Player.velocity.x * $C2/Player.BACKGROUND_OFFSET_MULT) * delta
+	#ShowProgress
 	if level_start:
 		if not game_over:
 			if $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:

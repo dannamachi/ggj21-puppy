@@ -106,10 +106,6 @@ func set_static():
 	
 func _process(delta):
 	#pass
-	#MoveBackGround
-	if get_node("../../ParallaxBackground") and not is_static:
-		get_node("../../ParallaxBackground").scroll_offset.x -= (base_displacement + velocity.x * BACKGROUND_OFFSET_MULT) * delta
-
 	if not is_static:
 		#AnimationSwitch
 		if Input.is_action_just_pressed("ui_up"):
