@@ -15,7 +15,6 @@ export var LEVEL_TIME = 60
 func _ready():
 	$Timer.wait_time = LEVEL_TIME
 	time_left = $Timer.wait_time
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,8 +63,12 @@ func _on_SwitchTimer_timeout():
 	$C1/TransitionSlideOut/AnimationPlayer.play("run")
 	yield($C1/TransitionSlideOut/AnimationPlayer, "animation_finished")
 	$C1/TransitionSlideIn.show()
-	$ParallaxBackground/ParallaxLayerForest.show()
 	$ParallaxBackground/ParallaxLayerCave.hide()
+	$ParallaxBackground/ParallaxLayerForest.show()
 	$C1/TransitionSlideOut.hide()
+	$C1/TransitionSlideOut/AnimationPlayer.play_backwards("run")
 	$C1/TransitionSlideIn/AnimationPlayer.play("run")
+	yield($C1/TransitionSlideIn/AnimationPlayer, "animation_finished")
+	$C1/TransitionSlideIn.hide()
+	$C1/TransitionSlideIn/AnimationPlayer.play_backwards("run")
 	

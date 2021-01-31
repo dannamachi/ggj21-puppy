@@ -143,7 +143,6 @@ func _process(delta):
 					toPlay = "flying"
 						
 			if toPlay != "N/A" and toPlay != currPlay:
-				print("switching to " + toPlay)
 				$AnimatedSprite.play(toPlay)
 
 	#print(position.y)
