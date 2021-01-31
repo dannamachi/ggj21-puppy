@@ -25,7 +25,6 @@ tracks/0/keys = {
 }
 
 [node name="TransitionSlideIn" type="ColorRect"]
-visible = false
 material = SubResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
@@ -36,4 +35,5 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
 anims/run = SubResource( 2 )

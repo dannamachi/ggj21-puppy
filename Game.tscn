@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=1]
 [ext_resource path="res://GroundPiece.tscn" type="PackedScene" id=2]
@@ -11,9 +11,8 @@
 [ext_resource path="res://Bat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://BigRock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Transitions/TransitionSlideIn.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Transitions/TransitionTierIn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/wall/GameJamCavePan.png" type="Texture" id=12]
 [ext_resource path="res://Transitions/TransitionSlideOut.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Transitions/TransitionTierOut.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -37,11 +36,12 @@ layer = 1
 scale = Vector2( 0.5, 0.5 )
 transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayerForest" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 1, 0 )
 motion_mirroring = Vector2( 2564, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerForest"]
 position = Vector2( -1.52588e-05, -7.62939e-06 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
@@ -49,11 +49,25 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2564, 288 )
 
+[node name="ParallaxLayerCave" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1, 0 )
+motion_mirroring = Vector2( 2564, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerCave"]
+position = Vector2( -4.33681e-19, -32 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 12 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2564, 288 )
+
 [node name="C1" type="CanvasLayer" parent="."]
 
 [node name="TransitionSlideIn" parent="C1" instance=ExtResource( 11 )]
+visible = false
 
 [node name="TransitionSlideOut" parent="C1" instance=ExtResource( 13 )]
+visible = false
 
 [node name="C2" type="CanvasLayer" parent="."]
 layer = 2
@@ -214,19 +228,16 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 60.0
 one_shot = true
 
 [node name="WinTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
-[node name="C3" type="CanvasLayer" parent="."]
-layer = 3
-
-[node name="TransitionTierIn" parent="C3" instance=ExtResource( 12 )]
-
-[node name="TransitionTierOut" parent="C3" instance=ExtResource( 14 )]
+[node name="SwitchTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 [connection signal="timeout" from="C2/GroundGenerator/SpawnTimer" to="C2/GroundGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="C2/ObstacleGenerator/SpawnTimer" to="C2/ObstacleGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="game_start" from="C2/Player" to="." method="_on_Player_game_start"]
@@ -236,3 +247,4 @@ layer = 3
 [connection signal="body_exited" from="C2/HighZone" to="C2/Player" method="_on_HighZone_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]
+[connection signal="timeout" from="SwitchTimer" to="." method="_on_SwitchTimer_timeout"]
