@@ -6,9 +6,6 @@ export (PackedScene) var GameOver
 
 var op1 = preload("res://Cutscenes/CutsceneA.tscn")
 var op2 = preload("res://Cutscenes/CutsceneB.tscn")
-var op3 = preload("res://Cutscenes/CutsceneC.tscn")
-var op4 = preload("res://Cutscenes/CutsceneD.tscn")
-var op5 = preload("res://Cutscenes/CutsceneE.tscn")
 var op6 = preload("res://Cutscenes/CutsceneF.tscn")
 var op7 = preload("res://Cutscenes/CutsceneG.tscn")
 
@@ -19,9 +16,6 @@ var isGameTrack = true
 var cutArr = {
 	"Opening1"     : op1,
 	"Opening2"     : op2,
-	"Opening3"     : op3,
-	"Opening4"     : op4,
-	"Opening5"     : op5,
 	"Ending"       : op6,
 	"PreEnding"    : op7
 }
@@ -110,12 +104,6 @@ func on_end_from_cuts(cutName):
 	if cutName == "Opening1":
 		switch_to_cutscene("Opening2")
 	elif cutName == "Opening2":
-		switch_to_cutscene("Opening3")
-	elif cutName == "Opening3":
-		switch_to_cutscene("Opening4")
-	elif cutName == "Opening4":
-		switch_to_cutscene("Opening5")
-	elif cutName == "Opening5":
 		switch_to_game()
 	elif cutName == "PreEnding":
 		switch_to_cutscene("Ending")
