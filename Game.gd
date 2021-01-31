@@ -11,15 +11,14 @@ var progressText = "%d km left"
 
 var threshold_time_list = [
 	60,
-	55,
-	49,
-	43,
-	35,
-	29,
-	23,
-	17,
+	53,
+	46,
+	39,
+	32,
+	25,
+	18,
 	11,
-	5
+	4
 ]
 
 var threshold_line_list = [
@@ -84,7 +83,7 @@ func _process(delta):
 			
 			#TextUpdate
 			for i in range(len(threshold_time_list)):
-				if time_left >= threshold_time_list[i] - 5:
+				if time_left >= threshold_time_list[i] - 7:
 					$C2/Display/FancyText.bbcode_text = "[center]%s[/center]" % threshold_line_list[i]
 					break
 	
