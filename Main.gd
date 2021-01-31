@@ -12,34 +12,52 @@ var cutArr = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cover_screen()
+	yield($Transitions, "transition_out_done")
 	switch_to_menu()
-
+	
+	
+func cover_screen():
+	$Transitions.cover_screen()
+	
+	
+func show_screen():
+	$Transitions.show_screen()
+	
 
 func switch_to_menu():
+	#MenuInstance
 	var menu = Menu.instance()
 	menu.connect("start_game", self, "on_start_from_menu")
 	menu.connect("quit_game", self, "on_quit")
-	add_child(menu)
+	$Scenes.add_child(menu)
+	show_screen()
 	
 
 func switch_to_game():
+	#GameInstance
 	var game = Game.instance()
 	game.connect("game_end", self, "on_game_end")
-	add_child(game)
+	$Scenes.add_child(game)
+	show_screen()
 	
 	
 func switch_to_over():
+	#GameOverInstance
 	var over = GameOver.instance()
 	over.connect("retry", self, "on_start_from_gameover")
 	over.connect("give_up", self, "on_give_up")
-	add_child(over)
+	$Scenes.add_child(over)
+	show_screen()
 	
 	
 func switch_to_cutscene(cutName):
+	#CutsceneInstance
 	var cuts = cutArr[cutName].instance()
 	cuts.setName(cutName)
 	cuts.connect("end", self, "on_end_from_cuts")
-	add_child(cuts)
+	$Scenes.add_child(cuts)
+	show_screen()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,7 +72,10 @@ func on_quit():
 	
 	
 func on_end_from_cuts(cutName):
-	for i in get_children():
+	cover_screen()
+	yield($Transitions, "transition_out_done")
+	#FreeInstance
+	for i in $Scenes.get_children():
 		if "Cutscene" in i.name:
 			i.queue_free()
 	
@@ -64,7 +85,10 @@ func on_end_from_cuts(cutName):
 
 
 func on_game_end(gameResult):
-	for i in get_children():
+	cover_screen()
+	yield($Transitions, "transition_out_done")
+	#FreeInstance
+	for i in $Scenes.get_children():
 		if "Game" in i.name:
 			i.queue_free()
 			
@@ -78,7 +102,10 @@ func on_game_end(gameResult):
 		
 		
 func on_give_up():
-	for i in get_children():
+	cover_screen()
+	yield($Transitions, "transition_out_done")
+	#FreeInstance
+	for i in $Scenes.get_children():
 		if "GameOver" in i.name:
 			i.queue_free()
 			
@@ -86,7 +113,10 @@ func on_give_up():
 		
 		
 func on_start_from_gameover():
-	for i in get_children():
+	cover_screen()
+	yield($Transitions, "transition_out_done")
+	#FreeInstance
+	for i in $Scenes.get_children():
 		if "GameOver" in i.name:
 			i.queue_free()
 			
@@ -95,7 +125,10 @@ func on_start_from_gameover():
 		
 
 func on_start_from_menu():
-	for i in get_children():
+	cover_screen()
+	yield($Transitions, "transition_out_done")
+	#FreeInstance
+	for i in $Scenes.get_children():
 		if "Menu" in i.name:
 			i.queue_free()
 			

@@ -41,7 +41,6 @@ func _process(delta):
 func _on_Player_game_start():
 	$Timer.start()
 	$SwitchTimer.start()
-	$C2/GroundGenerator/SpawnTimer.start()
 	bar_interval = $Timer.wait_time / num_time_bar
 	level_start = true
 	
@@ -72,3 +71,4 @@ func _on_SwitchTimer_timeout():
 	$C1/TransitionSlideIn.hide()
 	$C1/TransitionSlideIn/AnimationPlayer.play_backwards("run")
 	
+

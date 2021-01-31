@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Transitions/TransitionSlideOut.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Transitions/TransitionSlideIn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Transitions/TransitionTierIn.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Transitions/Transitions.gd" type="Script" id=9]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,19 +20,25 @@ GameOver = ExtResource( 4 )
 margin_right = 40.0
 margin_bottom = 40.0
 rect_scale = Vector2( 15.9899, 9.03634 )
-color = Color( 0.72549, 0.498039, 0.498039, 1 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Scenes" type="Node2D" parent="."]
 
-[node name="Transitions" type="Node2D" parent="."]
+[node name="Transitions" type="CanvasLayer" parent="."]
+layer = 5
+script = ExtResource( 9 )
 
 [node name="TransitionSlideIn" parent="Transitions" instance=ExtResource( 7 )]
+visible = false
 
 [node name="TransitionSlideOut" parent="Transitions" instance=ExtResource( 6 )]
+visible = false
 
 [node name="TransitionTierIn" parent="Transitions" instance=ExtResource( 8 )]
+visible = false
 
 [node name="TransitionTierOut" parent="Transitions" instance=ExtResource( 5 )]
+visible = false

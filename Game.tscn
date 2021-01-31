@@ -82,30 +82,31 @@ position = Vector2( -64, 80 )
 
 [node name="SpawnTimer" type="Timer" parent="C2/GroundGenerator"]
 wait_time = 0.3
+autostart = true
 
 [node name="GroundPiece" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -904, 80 )
+position = Vector2( -888, 80 )
 
 [node name="GroundPiece2" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -784, 80 )
+position = Vector2( -768, 80 )
 
 [node name="GroundPiece3" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -664, 80 )
+position = Vector2( -648, 80 )
 
 [node name="GroundPiece4" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -544, 80 )
+position = Vector2( -528, 80 )
 
 [node name="GroundPiece5" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -424, 80 )
+position = Vector2( -408, 80 )
 
 [node name="GroundPiece6" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -304, 80 )
+position = Vector2( -288, 80 )
 
 [node name="GroundPiece7" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -200, 80 )
+position = Vector2( -184, 80 )
 
 [node name="GroundPiece8" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -80, 80 )
+position = Vector2( -64, 80 )
 
 [node name="ObstacleGenerator" type="Node2D" parent="C2"]
 script = ExtResource( 6 )
@@ -235,6 +236,10 @@ one_shot = true
 [node name="SwitchTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="StaticTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 [connection signal="timeout" from="C2/GroundGenerator/SpawnTimer" to="C2/GroundGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="C2/ObstacleGenerator/SpawnTimer" to="C2/ObstacleGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="game_start" from="C2/Player" to="." method="_on_Player_game_start"]
@@ -245,3 +250,4 @@ one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]
 [connection signal="timeout" from="SwitchTimer" to="." method="_on_SwitchTimer_timeout"]
+[connection signal="timeout" from="StaticTimer" to="C2/Player" method="_on_StaticTimer_timeout"]
