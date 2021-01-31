@@ -4,6 +4,7 @@ signal game_start
 
 var started = false
 var is_static = false
+var is_menu = false
 
 #FineTuningAnimation
 var LANDING_TIME = 30
@@ -126,10 +127,12 @@ func _process(delta):
 				elif currPlay == "landing":
 					landingTime -= 1
 					if landingTime == 0:
-						if position.y > 266:
+						if not is_menu and position.y > 266:
 							toPlay = "running"
 						else:
 							toPlay = "standing"
+				elif is_menu and currPlay == "running" and velocity.x == 0:
+					toPlay = "standing"
 			elif not is_on_floor() and not is_hit:
 				if currPlay == "jumping":
 					jumpingTime -= 1

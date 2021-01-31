@@ -1,51 +1,175 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Items/GroundPiece.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=4]
+[ext_resource path="res://assets/items/arrowLeft.png" type="Texture" id=5]
+[ext_resource path="res://assets/items/arrowUp.png" type="Texture" id=6]
+[ext_resource path="res://assets/items/arrowRight.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 180 )
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-rect_scale = Vector2( 16.0205, 9.03758 )
+rect_scale = Vector2( 16.0852, 9.05692 )
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BG" type="TextureRect" parent="."]
+margin_left = -176.0
+margin_top = -32.0
+margin_right = 3024.0
+margin_bottom = 328.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Title" type="RichTextLabel" parent="."]
-margin_top = 64.0
+margin_top = 16.0
 margin_right = 320.0
-margin_bottom = 128.0
+margin_bottom = 80.0
 rect_scale = Vector2( 1.99893, 2.25603 )
 bbcode_enabled = true
-bbcode_text = "[wave amp=100 freq=5][center]LOST PUPPY WANTED[/center][/wave]"
-text = "LOST PUPPY WANTED"
+bbcode_text = "[wave amp=100 freq=5][center]BRAVE ADVENTURER 
+WANTED![/center][/wave]"
+text = "BRAVE ADVENTURER 
+WANTED!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play" type="RichTextLabel" parent="."]
-margin_left = 168.0
-margin_top = 256.0
-margin_right = 488.0
-margin_bottom = 296.0
+margin_left = 392.0
+margin_top = 320.0
+margin_right = 712.0
+margin_bottom = 360.0
 bbcode_enabled = true
-bbcode_text = "[center][rainbow]PRESS Z[/rainbow][/center] TO START LOOKING"
-text = "PRESS Z TO START LOOKING"
+bbcode_text = "[center][rainbow]THIS WAY[/rainbow][/center] TO 
+[center]YOUR EPIC ADVENTURE[/center]"
+text = "THIS WAY TO 
+YOUR EPIC ADVENTURE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Quit" type="RichTextLabel" parent="."]
-margin_left = 176.0
-margin_top = 288.0
-margin_right = 496.0
-margin_bottom = 352.0
+margin_left = -80.0
+margin_top = 320.0
+margin_right = 240.0
+margin_bottom = 384.0
 bbcode_enabled = true
-bbcode_text = "[center][rainbow]PRESS Q[/rainbow][/center] TO ABANDON THE PUPPY"
-text = "PRESS Q TO ABANDON THE PUPPY"
+bbcode_text = "[center][rainbow]THIS WAY[/rainbow][/center] TO 
+[center]RETURN TO SAFETY[/center]"
+text = "THIS WAY TO 
+RETURN TO SAFETY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Decor" type="Node2D" parent="."]
+position = Vector2( 8, 24 )
+
+[node name="GroundPiece" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 0, 280 )
+
+[node name="GroundPiece2" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 96, 280 )
+
+[node name="GroundPiece3" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 192, 280 )
+
+[node name="GroundPiece4" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 288, 280 )
+
+[node name="GroundPiece5" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 384, 280 )
+
+[node name="GroundPiece6" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 480, 280 )
+
+[node name="GroundPiece7" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 576, 280 )
+
+[node name="GroundPiece8" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 232, 248 )
+
+[node name="GroundPiece9" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 328, 248 )
+
+[node name="GroundPiece10" parent="Decor" instance=ExtResource( 2 )]
+position = Vector2( 280, 216 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, -56 )
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="WallLeft" type="RigidBody2D" parent="Bounds"]
+position = Vector2( 0, 24 )
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/WallLeft"]
+position = Vector2( 8, 88 )
+shape = SubResource( 1 )
+
+[node name="WallRight" type="RigidBody2D" parent="Bounds"]
+position = Vector2( 624, 24 )
+collision_layer = 2
+mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/WallRight"]
+position = Vector2( 8, 88 )
+shape = SubResource( 1 )
+
+[node name="QuitPos" type="Position2D" parent="Bounds"]
+position = Vector2( 64, 0 )
+
+[node name="StartPos" type="Position2D" parent="Bounds"]
+position = Vector2( 576, 0 )
+
+[node name="Display" type="Node2D" parent="."]
+position = Vector2( 8, 16 )
+
+[node name="TextureRect" type="TextureRect" parent="Display"]
+margin_left = 192.0
+margin_top = 296.0
+margin_right = 292.0
+margin_bottom = 396.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Display"]
+margin_left = 376.0
+margin_top = 296.0
+margin_right = 476.0
+margin_bottom = 396.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Display"]
+margin_left = 286.0
+margin_top = 296.0
+margin_right = 386.0
+margin_bottom = 396.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

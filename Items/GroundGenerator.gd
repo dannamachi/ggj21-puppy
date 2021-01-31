@@ -9,7 +9,6 @@ var ground_type = "CAVE"
 func _ready():
 	for i in get_children():
 		if "GroundPiece" in i.name:
-			i.connect("escape_scene", self, "on_piece_destroyed")
 			i.set_sprite_type(ground_type)
 
 
@@ -21,6 +20,5 @@ func _ready():
 func _on_SpawnTimer_timeout():
 	var piece = Piece.instance()
 	piece.position = $SpawnPoint.position
-	piece.connect("escape_scene", self, "on_piece_destroyed")
 	piece.set_sprite_type(ground_type)
 	add_child(piece)

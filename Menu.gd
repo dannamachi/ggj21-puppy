@@ -8,15 +8,23 @@ var quitted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Player.is_menu = true
+	for i in $Decor.get_children():
+		if "GroundPiece" in i.name:
+			i.set_static()
+			i.set_sprite_type("FOREST")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not quitted:
-		if Input.is_action_just_pressed("press-z"):
+		if $Player.position.x >= $Bounds/StartPos.position.x:
 			emit_signal("start_game")
 			quitted = true
-		elif Input.is_action_just_pressed("press-q"):
+		elif $Player.position.x <= $Bounds/QuitPos.position.x:
 			emit_signal("quit_game")
 			quitted = true
+	
+	#LeftRightFlip
+	if Input.is_action_just_pressed("ui_right"): $Player/AnimatedSprite.flip_h = false
+	elif Input.is_action_just_pressed("ui_left"): $Player/AnimatedSprite.flip_h = true
