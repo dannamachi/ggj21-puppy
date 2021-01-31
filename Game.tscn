@@ -1,18 +1,18 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=1]
-[ext_resource path="res://GroundPiece.tscn" type="PackedScene" id=2]
-[ext_resource path="res://GroundGenerator.gd" type="Script" id=3]
+[ext_resource path="res://Items/BatGenerator.gd" type="Script" id=3]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Game.gd" type="Script" id=5]
-[ext_resource path="res://Rock.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ObstacleGenerator.gd" type="Script" id=7]
-[ext_resource path="res://BatGenerator.gd" type="Script" id=8]
-[ext_resource path="res://Bat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://BigRock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Items/ObstacleGenerator.gd" type="Script" id=6]
+[ext_resource path="res://Items/GroundGenerator.gd" type="Script" id=7]
+[ext_resource path="res://Items/BigRock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Items/Bat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Items/GroundPiece.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Transitions/TransitionSlideIn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/wall/GameJamCavePan.png" type="Texture" id=12]
 [ext_resource path="res://Transitions/TransitionSlideOut.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Rock.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -74,8 +74,8 @@ layer = 2
 
 [node name="GroundGenerator" type="Node2D" parent="C2"]
 position = Vector2( 944, 256 )
-script = ExtResource( 3 )
-Piece = ExtResource( 2 )
+script = ExtResource( 7 )
+Piece = ExtResource( 10 )
 
 [node name="SpawnPoint" type="Position2D" parent="C2/GroundGenerator"]
 position = Vector2( -64, 80 )
@@ -83,37 +83,34 @@ position = Vector2( -64, 80 )
 [node name="SpawnTimer" type="Timer" parent="C2/GroundGenerator"]
 wait_time = 0.3
 
-[node name="GroundPiece" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -328, 80 )
+[node name="GroundPiece" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -904, 80 )
 
-[node name="GroundPiece2" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -464, 80 )
+[node name="GroundPiece2" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -784, 80 )
 
-[node name="GroundPiece3" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -592, 80 )
+[node name="GroundPiece3" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -664, 80 )
 
-[node name="GroundPiece4" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -728, 80 )
+[node name="GroundPiece4" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -544, 80 )
 
-[node name="GroundPiece5" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -864, 80 )
+[node name="GroundPiece5" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -424, 80 )
 
-[node name="GroundPiece6" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -992, 80 )
+[node name="GroundPiece6" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -304, 80 )
 
-[node name="GroundPiece7" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -192, 80 )
+[node name="GroundPiece7" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -200, 80 )
 
-[node name="GroundPiece8" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( 80, 80 )
-
-[node name="GroundPiece9" parent="C2/GroundGenerator" instance=ExtResource( 2 )]
-position = Vector2( -56, 80 )
+[node name="GroundPiece8" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -80, 80 )
 
 [node name="ObstacleGenerator" type="Node2D" parent="C2"]
-script = ExtResource( 7 )
-Rock = ExtResource( 6 )
-BigRock = ExtResource( 10 )
+script = ExtResource( 6 )
+Rock = ExtResource( 14 )
+BigRock = ExtResource( 8 )
 
 [node name="SpawnPoint" type="Position2D" parent="C2/ObstacleGenerator"]
 position = Vector2( 810, 290 )
@@ -129,7 +126,7 @@ autostart = true
 position = Vector2( 320, 112 )
 
 [node name="BatGenerator" type="Node2D" parent="C2"]
-script = ExtResource( 8 )
+script = ExtResource( 3 )
 Bat = ExtResource( 9 )
 
 [node name="QueueTimer" type="Timer" parent="C2/BatGenerator"]
