@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://Items/GroundPiece.tscn" type="PackedScene" id=2]
@@ -7,8 +7,18 @@
 [ext_resource path="res://assets/items/arrowLeft.png" type="Texture" id=5]
 [ext_resource path="res://assets/items/arrowUp.png" type="Texture" id=6]
 [ext_resource path="res://assets/items/arrowRight.png" type="Texture" id=7]
+[ext_resource path="res://fonts/Sanitrixie.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 180 )
 
 [node name="Menu" type="Node2D"]
@@ -35,13 +45,14 @@ __meta__ = {
 }
 
 [node name="Title" type="RichTextLabel" parent="."]
-margin_top = 16.0
+margin_top = 48.0
 margin_right = 320.0
-margin_bottom = 80.0
+margin_bottom = 112.0
 rect_scale = Vector2( 1.99893, 2.25603 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[wave amp=100 freq=5][center]BRAVE ADVENTURER 
-WANTED![/center][/wave]"
+bbcode_text = "[center]BRAVE ADVENTURER 
+WANTED![/center]"
 text = "BRAVE ADVENTURER 
 WANTED!"
 __meta__ = {
@@ -49,10 +60,11 @@ __meta__ = {
 }
 
 [node name="Play" type="RichTextLabel" parent="."]
-margin_left = 392.0
+margin_left = 376.0
 margin_top = 320.0
-margin_right = 712.0
+margin_right = 696.0
 margin_bottom = 360.0
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center][rainbow]THIS WAY[/rainbow][/center] TO 
 [center]YOUR EPIC ADVENTURE[/center]"
@@ -67,6 +79,7 @@ margin_left = -80.0
 margin_top = 320.0
 margin_right = 240.0
 margin_bottom = 384.0
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center][rainbow]THIS WAY[/rainbow][/center] TO 
 [center]RETURN TO SAFETY[/center]"
@@ -121,7 +134,7 @@ mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/WallLeft"]
 position = Vector2( 8, 88 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="WallRight" type="RigidBody2D" parent="Bounds"]
 position = Vector2( 624, 24 )
@@ -130,7 +143,7 @@ mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/WallRight"]
 position = Vector2( 8, 88 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="QuitPos" type="Position2D" parent="Bounds"]
 position = Vector2( 64, 0 )
