@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/cuts/Opening1.png" type="Texture" id=1]
+[ext_resource path="res://assets/cuts/Opening5.png" type="Texture" id=2]
 [ext_resource path="res://Cutscenes/CutsceneA.gd" type="Script" id=5]
 
-[node name="CutsceneA" type="Node2D"]
+[node name="CutsceneE" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_top = 24.0
 margin_right = 2564.0
 margin_bottom = 504.0
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -43,6 +43,6 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 2.0
 one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

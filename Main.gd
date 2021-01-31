@@ -4,10 +4,20 @@ export (PackedScene) var Menu
 export (PackedScene) var Game
 export (PackedScene) var GameOver
 
-var cuts1 = preload("res://Cutscenes/CutsceneA.tscn")
+var op1 = preload("res://Cutscenes/CutsceneA.tscn")
+var op2 = preload("res://Cutscenes/CutsceneB.tscn")
+var op3 = preload("res://Cutscenes/CutsceneC.tscn")
+var op4 = preload("res://Cutscenes/CutsceneD.tscn")
+var op5 = preload("res://Cutscenes/CutsceneE.tscn")
+var op6 = preload("res://Cutscenes/CutsceneF.tscn")
 
 var cutArr = {
-	"DropRock"     : cuts1
+	"Opening1"     : op1,
+	"Opening2"     : op2,
+	"Opening3"     : op3,
+	"Opening4"     : op4,
+	"Opening5"     : op5,
+	"Ending"       : op6
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -17,12 +27,12 @@ func _ready():
 	switch_to_menu()
 	
 	
-func cover_screen():
-	$Transitions.cover_screen()
+func cover_screen(slide=false):
+	$Transitions.cover_screen(slide)
 	
 	
-func show_screen():
-	$Transitions.show_screen()
+func show_screen(slide=false):
+	$Transitions.show_screen(slide)
 	
 
 func switch_to_menu():
@@ -57,7 +67,7 @@ func switch_to_cutscene(cutName):
 	cuts.setName(cutName)
 	cuts.connect("end", self, "on_end_from_cuts")
 	$Scenes.add_child(cuts)
-	show_screen()
+	show_screen(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,7 +83,7 @@ func on_quit():
 	
 	
 func on_end_from_cuts(cutName):
-	cover_screen()
+	cover_screen(true)
 	yield($Transitions, "transition_out_done")
 	#FreeInstance
 	for i in $Scenes.get_children():
@@ -81,7 +91,17 @@ func on_end_from_cuts(cutName):
 			i.queue_free()
 	
 	#GameFlow
-	if cutName == "DropRock":
+	if cutName == "Opening1":
+		switch_to_cutscene("Opening2")
+	elif cutName == "Opening2":
+		switch_to_cutscene("Opening3")
+	elif cutName == "Opening3":
+		switch_to_cutscene("Opening4")
+	elif cutName == "Opening4":
+		switch_to_cutscene("Opening5")
+	elif cutName == "Opening5":
+		switch_to_game()
+	else:
 		switch_to_menu()
 
 
@@ -96,7 +116,7 @@ func on_game_end(gameResult):
 	#WinGame
 	if not gameResult:
 		#GameFlow
-		switch_to_cutscene("DropRock")
+		switch_to_cutscene("Ending")
 	#LoseGame
 	else:
 		switch_to_over()
@@ -133,5 +153,5 @@ func on_start_from_menu():
 		if "Menu" in i.name:
 			i.queue_free()
 			
-	#GameFlow might not start with game
-	switch_to_game()
+	#GameFlow
+	switch_to_cutscene("Opening1")

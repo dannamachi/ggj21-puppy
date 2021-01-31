@@ -10,25 +10,41 @@ func _ready():
 	pass # Replace with function body.
 
 
-func cover_screen():
+func cover_screen(slide):
 	#Transition
-	$TransitionTierOut.show()
-	var ani = $TransitionTierOut/AnimationPlayer
+	var ani
+	if not slide:
+		$TransitionTierOut.show()
+		ani = $TransitionTierOut/AnimationPlayer
+	else:
+		$TransitionSlideOut.show()
+		ani = $TransitionSlideOut/AnimationPlayer
 	ani.play("run")
 	yield(ani, "animation_finished")
 	emit_signal("transition_out_done")
-	$TransitionTierOut.hide()
+	if not slide:
+		$TransitionTierOut.hide()
+	else:
+		$TransitionSlideOut.hide()
 	ani.play_backwards("run")
 	
 	
-func show_screen():
+func show_screen(slide):
 	#Transition
-	$TransitionTierIn.show()
-	var ani = $TransitionTierIn/AnimationPlayer
+	var ani
+	if not slide:
+		$TransitionTierIn.show()
+		ani = $TransitionTierIn/AnimationPlayer
+	else:
+		$TransitionSlideIn.show()
+		ani = $TransitionSlideIn/AnimationPlayer
 	ani.play("run")
 	yield(ani, "animation_finished")
 	emit_signal("transition_in_done")
-	$TransitionTierIn.hide()
+	if not slide:
+		$TransitionTierIn.hide()
+	else:
+		$TransitionSlideIn.hide()
 	ani.play_backwards("run")
 	
 
