@@ -133,6 +133,8 @@ func _process(delta):
 							toPlay = "standing"
 				elif is_menu and currPlay == "running" and velocity.x == 0:
 					toPlay = "standing"
+				elif currPlay == "standing" and velocity.x != 0:
+					toPlay = "running"
 			elif not is_on_floor() and not is_hit:
 				if currPlay == "jumping":
 					jumpingTime -= 1

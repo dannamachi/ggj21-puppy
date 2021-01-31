@@ -3,10 +3,36 @@ extends Node2D
 signal game_end(gameResult)
 
 var game_over = false
-var num_time_bar = 10
+var num_time_bar = 20
 var bar_interval = 0
 var time_left = 0
 var level_start = false
+var progressText = "%d km left"
+
+var threshold_time_list = [
+	60,
+	55,
+	49,
+	43,
+	35,
+	29,
+	23,
+	17,
+	11,
+	5
+]
+
+var threshold_line_list = [
+	"Dog?: ROAAAAAAAAAAAAARRRR~",
+	"Why am I doing this again?",
+	"Right, it's the coins. A lot of 'em.",
+	"What a beautiful day today.",
+	"Aaaaaaaaaaaaaaaaaa",
+	"Are coins really worth running for my life?",
+	"Of course they are, silly me.",
+	"Almost there! The coins!!",
+	"If I don't make it coming this far I'll--"
+]
 
 export var LEVEL_TIME = 60
 
@@ -45,15 +71,22 @@ func _process(delta):
 				$C2/Display/FancyText.bbcode_text = "[center]NOOOOO~[/center]"
 				stop_game()
 			
-		if not game_over: time_left = $Timer.get_time_left()
-		var progressBar = "<< "
-		for i in num_time_bar:
-			if (LEVEL_TIME - time_left) <= i * bar_interval:
-				progressBar += "="
-			else:
-				progressBar += "O"
-		progressBar += " >>"
-		$C2/Display/ProgressLine.text = progressBar
+		if not game_over and level_start: 
+			time_left = $Timer.get_time_left()
+	#		var progressBar = "<<"
+	#		for i in num_time_bar:
+	#			if (LEVEL_TIME - time_left) <= i * bar_interval:
+	#				progressBar += "-"
+	#			else:
+	#				progressBar += "O"
+	#		progressBar += "->>"
+			$C2/Display/ProgressLine.text = progressText % time_left
+			
+			#TextUpdate
+			for i in range(len(threshold_time_list)):
+				if time_left >= threshold_time_list[i] - 5:
+					$C2/Display/FancyText.bbcode_text = "[center]%s[/center]" % threshold_line_list[i]
+					break
 	
 
 func _on_Player_game_start():

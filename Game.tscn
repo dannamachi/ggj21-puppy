@@ -15,56 +15,56 @@
 [ext_resource path="res://Transitions/TransitionSlideOut.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/Rock.tscn" type="PackedScene" id=14]
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 320, 0, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 320, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 320, 320, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 640, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 320, 640, 320, 320 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=8]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -8, -80, 0, 0, 0, 0, 160, -152, 0, 0, 0, 0, 360, -152, 0, 0, 0, 0, 504, -136, 0, 0, 0, 0, 584, -88, 0, 0, 0, 0, 640, -104 )
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 16, 640 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 32, 640 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 320, 64 )
 
 [node name="Game" type="Node2D"]
@@ -170,7 +170,7 @@ autostart = true
 
 [node name="Monster" type="AnimatedSprite" parent="C2"]
 position = Vector2( 136, 168 )
-frames = SubResource( 11 )
+frames = SubResource( 7 )
 
 [node name="Player" parent="C2" instance=ExtResource( 4 )]
 position = Vector2( 328, 280 )
@@ -187,7 +187,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="Path2D" type="Path2D" parent="C2/BatGenerator"]
-curve = SubResource( 1 )
+curve = SubResource( 8 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="C2/BatGenerator/Path2D"]
 position = Vector2( -8, -80 )
@@ -200,7 +200,7 @@ mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="C2/EatenWall"]
 position = Vector2( 16, -152 )
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 
 [node name="LastPos" type="Position2D" parent="C2/EatenWall"]
 position = Vector2( 144, 0 )
@@ -213,14 +213,14 @@ mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="C2/EatenWall2"]
 position = Vector2( 32, -152 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="HighZone" type="Area2D" parent="C2"]
 position = Vector2( 0, 64 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="C2/HighZone"]
 position = Vector2( 320, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 11 )
 
 [node name="Display" type="Node2D" parent="C2"]
 
@@ -244,13 +244,11 @@ __meta__ = {
 }
 
 [node name="FancyText" type="RichTextLabel" parent="C2/Display"]
-margin_left = 216.0
-margin_top = 342.0
-margin_right = 416.0
-margin_bottom = 382.0
+margin_left = 88.0
+margin_top = 344.0
+margin_right = 568.0
+margin_bottom = 384.0
 bbcode_enabled = true
-bbcode_text = "[center][wave]STAY ALIVE[/wave][/center]"
-text = "STAY ALIVE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
