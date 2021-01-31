@@ -12,6 +12,10 @@ var op5 = preload("res://Cutscenes/CutsceneE.tscn")
 var op6 = preload("res://Cutscenes/CutsceneF.tscn")
 var op7 = preload("res://Cutscenes/CutsceneG.tscn")
 
+var titletrack = preload("res://assets/sfx/future chill 3.wav")
+var gametrack = preload("res://assets/sfx/future chill jazzy less onii.wav")
+var isGameTrack = true
+
 var cutArr = {
 	"Opening1"     : op1,
 	"Opening2"     : op2,
@@ -37,21 +41,31 @@ func show_screen(slide=false):
 	$Transitions.show_screen(slide)
 	
 
-func switch_to_menu():
+func switch_to_menu(musicPlay=true):
 	#MenuInstance
 	var menu = Menu.instance()
 	menu.connect("start_game", self, "on_start_from_menu")
 	menu.connect("quit_game", self, "on_quit")
 	$Scenes.add_child(menu)
 	show_screen()
+	if musicPlay:
+		$Music.stream = titletrack
+		$Music.play()
+		$Music/AnimationPlayer.play("fadein")
 	
 
-func switch_to_game():
+func switch_to_game(musicPlay=false):
 	#GameInstance
 	var game = Game.instance()
 	game.connect("game_end", self, "on_game_end")
 	$Scenes.add_child(game)
 	show_screen()
+	if musicPlay:
+		if isGameTrack: $Music.stream = gametrack
+		else: $Music.stream = titletrack
+		isGameTrack = not isGameTrack
+		$Music.play()
+		$Music/AnimationPlayer.play("fadein")
 	
 	
 func switch_to_over():
@@ -105,13 +119,18 @@ func on_end_from_cuts(cutName):
 		switch_to_game()
 	elif cutName == "PreEnding":
 		switch_to_cutscene("Ending")
+		$Music.stream = titletrack
+		$Music.play()
+		$Music/AnimationPlayer.play("fadein")
 	else:
-		switch_to_menu()
+		switch_to_menu(false)
 
 
 func on_game_end(gameResult):
 	cover_screen()
+	$Music/AnimationPlayer.play_backwards("fadein")
 	yield($Transitions, "transition_out_done")
+	$Music.stop()
 	#FreeInstance
 	for i in $Scenes.get_children():
 		if "Game" in i.name:
@@ -146,7 +165,7 @@ func on_start_from_gameover():
 			i.queue_free()
 			
 	#GameFlow might not start with game
-	switch_to_game()
+	switch_to_game(true)
 		
 
 func on_start_from_menu():

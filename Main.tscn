@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=2]
@@ -9,6 +9,22 @@
 [ext_resource path="res://Transitions/TransitionSlideIn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Transitions/TransitionTierIn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Transitions/Transitions.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fadein"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -42,3 +58,9 @@ visible = false
 
 [node name="TransitionTierOut" parent="Transitions" instance=ExtResource( 5 )]
 visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Music"]
+anims/fadein = SubResource( 1 )
