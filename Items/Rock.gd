@@ -17,6 +17,15 @@ func _process(delta):
 		position.x -= SPEED
 	
 	
+func set_sprite_type(name="CAVE"):
+	$Sprite.hide()
+	$Sprite2.hide()
+	if name == "CAVE": 
+		$Sprite.show()
+	else:
+		$Sprite2.show()
+
+	
 func set_static():
 	is_static = true
 

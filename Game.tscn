@@ -120,7 +120,7 @@ Rock = ExtResource( 14 )
 BigRock = ExtResource( 8 )
 
 [node name="SpawnPoint" type="Position2D" parent="C2/ObstacleGenerator"]
-position = Vector2( 810, 290 )
+position = Vector2( 808, 288 )
 
 [node name="SpawnPoint2" type="Position2D" parent="C2/ObstacleGenerator"]
 position = Vector2( 824, 272 )

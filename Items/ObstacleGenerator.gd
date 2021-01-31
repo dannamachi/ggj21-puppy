@@ -3,6 +3,9 @@ extends Node2D
 export (PackedScene) var Rock
 export (PackedScene) var BigRock
 
+var sprite_type = "CAVE"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,6 +26,8 @@ func _on_SpawnTimer_timeout():
 	else:
 		rock = Rock.instance()
 		rock.position = $SpawnPoint.position
+		
+	rock.set_sprite_type(sprite_type)
 		
 	add_child(rock)
 	$SpawnTimer.start()

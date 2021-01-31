@@ -78,6 +78,7 @@ func _on_SwitchTimer_timeout():
 	yield($C1/TransitionSlideOut/AnimationPlayer, "animation_finished")
 	$C2/GroundGenerator.ground_type = "FOREST"
 	$C2/BatGenerator.sprite_type = "OWL"
+	$C2/ObstacleGenerator.sprite_type = "FOREST"
 	$C1/TransitionSlideIn.show()
 	$ParallaxBackground/ParallaxLayerCave.hide()
 	$ParallaxBackground/ParallaxLayerForest.show()
