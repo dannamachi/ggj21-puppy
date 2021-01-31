@@ -14,9 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not quitted:
-		if Input.is_action_pressed("press-z"):
+		if Input.is_action_just_pressed("press-z"):
 			emit_signal("start_game")
 			quitted = true
-		elif Input.is_action_pressed("press-q"):
+		elif Input.is_action_just_pressed("press-q"):
 			emit_signal("quit_game")
 			quitted = true

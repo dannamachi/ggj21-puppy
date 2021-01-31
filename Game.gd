@@ -15,17 +15,32 @@ export var LEVEL_TIME = 60
 func _ready():
 	$Timer.wait_time = LEVEL_TIME
 	time_left = $Timer.wait_time
+	$C2/Player.set_init_freeze()
+	
+	
+func stop_game():
+	$Timer.stop()
+	$WinTimer.start()
+	$C2/BatGenerator/SpawnTimer.stop()
+	$C2/GroundGenerator/SpawnTimer.stop()
+	$C2/BatGenerator/SpawnTimer.stop()
+	$C2/BatGenerator/QueueTimer.stop()
+	for i in $C2/GroundGenerator.get_children():
+		if "GroundPiece" in i.name: i.set_static()
+	for i in $C2/ObstacleGenerator.get_children():
+		if "Rock" in i.name: i.set_static()
+	$C2/Player.set_static()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if level_start:
-		if $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x and not game_over:
-			game_over = true
-			$C2/Display/Cover.show()
-			$C2/Display/FancyText.bbcode_text = "[center]GAME OVER[/center]"
-			$Timer.stop()
-			$WinTimer.start()
+		if not game_over:
+			if $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
+				game_over = true
+				$C2/Display/Cover.show()
+				$C2/Display/FancyText.bbcode_text = "[center]GAME OVER[/center]"
+				stop_game()
 			
 		if not game_over: time_left = $Timer.get_time_left()
 		var progressBar = "<< "
@@ -49,7 +64,7 @@ func _on_Timer_timeout():
 	if not game_over:
 		$C2/Display/Cover.show()
 		$C2/Display/FancyText.bbcode_text = "[center]YOU WIN[/center]"
-		$WinTimer.start()
+		stop_game()
 
 
 func _on_WinTimer_timeout():
@@ -70,5 +85,9 @@ func _on_SwitchTimer_timeout():
 	yield($C1/TransitionSlideIn/AnimationPlayer, "animation_finished")
 	$C1/TransitionSlideIn.hide()
 	$C1/TransitionSlideIn/AnimationPlayer.play_backwards("run")
-	
+	$GroundSwitchTimer.start()
 
+
+func _on_GroundSwitchTimer_timeout():
+	$C2/GroundGenerator.ground_type = "FOREST"
+	$C2/BatGenerator.sprite_type = "OWL"

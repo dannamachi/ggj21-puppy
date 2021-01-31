@@ -5,6 +5,7 @@ export var BAT_SPEED = 200
 
 var bat_list = []
 var time_start = false
+var sprite_type = "BAT"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +20,7 @@ func _process(delta):
 		time_start = true
 
 
-func spawn_bats(playerPos, num=1):
+func spawn_bats(num=1):
 	var unit_interval = 1.0/num
 	for i in range(num):
 		var bat = Bat.instance()
@@ -27,12 +28,9 @@ func spawn_bats(playerPos, num=1):
 		bat.position.x = $Path2D/PathFollow2D.position.x
 		bat.position.y = $Path2D/PathFollow2D.position.y
 		
-		bat.look_at(playerPos)
-		bat.rotate(rand_range(-PI / 6, PI / 6))
-		var velo = Vector2(BAT_SPEED, 0).rotated(bat.rotation)
-		bat.set_velo(velo.x, velo.y)
-		
 		bat.connect("hit_player", get_node("../Player"), "on_being_hit")
+		
+		bat.set_sprite_type(sprite_type)
 		
 		bat_list.append(bat)
 		
@@ -40,12 +38,21 @@ func spawn_bats(playerPos, num=1):
 
 func _on_SpawnTimer_timeout():
 	$SpawnTimer.wait_time = 4 + rand_range(-3.0, 3.0)
-	spawn_bats(get_node("../Player").position, randi() % 5 + 1)
-	$SpawnTimer.start()
+	spawn_bats(randi() % 5 + 1)
 	
 
 func _on_QueueTimer_timeout():
-	add_child(bat_list[0])
+	#AddChild
+	var bat = bat_list[0]
+	add_child(bat)
+	#SetVelo
+	var playerPosX = get_node("../Player").position.x
+	var playerPosY = get_node("../Player").position.y
+	bat.look_at(Vector2(playerPosX, playerPosY))
+	bat.rotate(rand_range(-PI / 6, PI / 6))
+	var velo = Vector2(BAT_SPEED, 0).rotated(bat.rotation)
+	bat.set_velo(velo.x, velo.y)
+	#UpdateQueue
 	bat_list.pop_front()
 	if len(bat_list) == 0:
 		$QueueTimer.stop()

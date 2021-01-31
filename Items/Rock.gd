@@ -4,6 +4,7 @@ extends RigidBody2D
 export var SPEED = 3
 
 var is_static = false
+var in_screen = false
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -21,5 +22,9 @@ func set_static():
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	if not is_static:
+	if not is_static and in_screen:
 		queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	in_screen = true

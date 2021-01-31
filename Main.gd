@@ -63,7 +63,8 @@ func switch_to_cutscene(cutName):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-#	for i in get_children():
+	#print($Scenes.get_child_count())
+#	for i in $Scenes.get_children():
 #		print(i.name + ",")
 	
 	

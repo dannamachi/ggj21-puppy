@@ -85,27 +85,33 @@ wait_time = 0.3
 autostart = true
 
 [node name="GroundPiece" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -888, 80 )
+position = Vector2( -928, 80 )
 
 [node name="GroundPiece2" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -768, 80 )
+position = Vector2( -832, 80 )
 
 [node name="GroundPiece3" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -648, 80 )
+position = Vector2( -736, 80 )
 
 [node name="GroundPiece4" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -528, 80 )
+position = Vector2( -640, 80 )
 
 [node name="GroundPiece5" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -408, 80 )
+position = Vector2( -544, 80 )
 
 [node name="GroundPiece6" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -288, 80 )
+position = Vector2( -448, 80 )
 
 [node name="GroundPiece7" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
-position = Vector2( -184, 80 )
+position = Vector2( -352, 80 )
 
 [node name="GroundPiece8" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -256, 80 )
+
+[node name="GroundPiece9" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
+position = Vector2( -160, 80 )
+
+[node name="GroundPiece10" parent="C2/GroundGenerator" instance=ExtResource( 10 )]
 position = Vector2( -64, 80 )
 
 [node name="ObstacleGenerator" type="Node2D" parent="C2"]
@@ -124,7 +130,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Player" parent="C2" instance=ExtResource( 4 )]
-position = Vector2( 320, 112 )
+position = Vector2( 320, 168 )
 
 [node name="BatGenerator" type="Node2D" parent="C2"]
 script = ExtResource( 3 )
@@ -237,7 +243,7 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="StaticTimer" type="Timer" parent="."]
+[node name="GroundSwitchTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
 [connection signal="timeout" from="C2/GroundGenerator/SpawnTimer" to="C2/GroundGenerator" method="_on_SpawnTimer_timeout"]
@@ -250,4 +256,4 @@ one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]
 [connection signal="timeout" from="SwitchTimer" to="." method="_on_SwitchTimer_timeout"]
-[connection signal="timeout" from="StaticTimer" to="C2/Player" method="_on_StaticTimer_timeout"]
+[connection signal="timeout" from="GroundSwitchTimer" to="." method="_on_GroundSwitchTimer_timeout"]

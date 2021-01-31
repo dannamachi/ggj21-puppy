@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("press-z"):
+	if Input.is_action_just_pressed("press-z"):
 		emit_signal("retry")
-	elif Input.is_action_pressed("press-x"):
+	elif Input.is_action_just_pressed("press-x"):
 		emit_signal("give_up")

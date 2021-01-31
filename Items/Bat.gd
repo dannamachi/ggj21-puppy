@@ -8,12 +8,23 @@ var in_screen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.play()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	position += velocity * delta
+	
+	
+func set_sprite_type(name="BAT"):
+	$Sprite1.hide()
+	$Sprite2.hide()
+	if name == "BAT": 
+		$Sprite1.show()
+		$Sprite1.play()
+	else:
+		$Sprite2.show()
+		$Sprite2.play()
 	
 
 func set_velo(velX, velY):
