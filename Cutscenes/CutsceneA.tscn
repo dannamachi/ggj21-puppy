@@ -7,9 +7,8 @@
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_top = 24.0
 margin_right = 2564.0
-margin_bottom = 504.0
+margin_bottom = 480.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,6 +23,7 @@ position = Vector2( 48, -16 )
 [node name="Display" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Display"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 rect_scale = Vector2( 16.0142, 0.702249 )
@@ -33,6 +33,7 @@ __meta__ = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="Display"]
+visible = false
 margin_top = 336.0
 margin_right = 40.0
 margin_bottom = 376.0

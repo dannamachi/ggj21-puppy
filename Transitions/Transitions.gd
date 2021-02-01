@@ -8,6 +8,19 @@ signal transition_out_done
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+	
+func switch_red():
+	$TransitionTierOut.color = Color( 1, 0, 0, 1)
+	$TransitionSlideOut.color = Color( 1, 0, 0, 1)
+	$TransitionTierIn.color = Color( 1, 0, 0, 1)
+	$TransitionSlideIn.color = Color( 1, 0, 0, 1)
+	
+func reset_red():
+	$TransitionTierOut.color = Color( 0, 0, 0, 1 )
+	$TransitionSlideOut.color = Color( 0, 0, 0, 1 )
+	$TransitionTierIn.color = Color( 0, 0, 0, 1 )
+	$TransitionSlideIn.color = Color( 0, 0, 0, 1 )
 
 
 func cover_screen(slide):

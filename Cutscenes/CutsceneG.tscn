@@ -1,29 +1,28 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Cutscenes/CutsceneG.gd" type="Script" id=1]
 [ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=2]
 [ext_resource path="res://assets/items/grandma_gun.png" type="Texture" id=3]
-[ext_resource path="res://assets/items/cottage.png" type="Texture" id=4]
 [ext_resource path="res://Items/GroundPiece.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/items/grandma.png" type="Texture" id=7]
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 128, 128, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 96, 64, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 64, 64, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 64, 32, 64 )
@@ -33,52 +32,52 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 128, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 64, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 96, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 32, 64, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 128, 64, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 128, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 32, 128, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 64, 128, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 96, 128, 32, 64 )
@@ -90,12 +89,12 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 15 ), SubResource( 9 ), SubResource( 8 ), SubResource( 6 ), SubResource( 5 ), SubResource( 1 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": false,
 "name": "gunback",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 5 ), SubResource( 4 ), SubResource( 10 ), SubResource( 3 ), SubResource( 2 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 1 ) ],
 "loop": false,
 "name": "gunning",
 "speed": 5.0
@@ -164,21 +163,11 @@ position = Vector2( 624, 344 )
 [node name="GroundPiece10" parent="Decors" instance=ExtResource( 5 )]
 position = Vector2( 720, 344 )
 
-[node name="TextureRect" type="TextureRect" parent="Decors"]
-margin_left = 464.0
-margin_top = 128.0
-margin_right = 673.0
-margin_bottom = 327.0
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Actors" type="Node2D" parent="."]
 position = Vector2( 48, -16 )
 
 [node name="Grandma" type="AnimatedSprite" parent="Actors"]
-position = Vector2( 320, 304 )
+position = Vector2( 408, 304 )
 frames = SubResource( 16 )
 animation = "gunback"
 

@@ -112,15 +112,18 @@ func on_end_from_cuts(cutName):
 
 
 func on_game_end(gameResult):
+	if gameResult:
+		$Transitions.switch_red()
 	cover_screen()
+	yield($Transitions, "transition_out_done")
 	if not gameResult:
 		$Music/AnimationPlayer.play_backwards("fadein")
-	yield($Transitions, "transition_out_done")
 	#FreeInstance
 	for i in $Scenes.get_children():
 		if "Game" in i.name:
 			i.queue_free()
 			
+	$Transitions.reset_red()
 	#WinGame
 	if not gameResult:
 		$Music.stop()

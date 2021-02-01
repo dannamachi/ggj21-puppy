@@ -25,14 +25,14 @@ var threshold_time_list = [
 
 var threshold_line_list = [
 	"Dog?: ROAAAAAAAAAAAAARRRR~",
-	"Why am I doing this again?",
-	"Right, it's the coins. A lot of 'em.",
-	"What a beautiful day today.",
-	"Aaaaaaaaaaaaaaaaaa",
-	"Are coins really worth running for my life?",
-	"Of course they are, silly me.",
-	"Almost there! The coins!!",
-	"If I don't make it coming this far I'll--"
+	"Adventurer: Why am I doing this again?",
+	"Adventurer: Right, it's the coins. A lot of 'em.",
+	"Adventurer: What a beautiful day today.",
+	"Adventurer: Aaaaaaaaaaaaaaaaaa",
+	"Adventurer: Are coins really worth running for my life?",
+	"Adventurer: Of course they are, silly me.",
+	"Adventurer: Almost there! The coins!!",
+	"Adventurer: If I don't make it coming this far I'll--"
 ]
 
 export var LEVEL_TIME = 60
@@ -81,7 +81,7 @@ func _process(delta):
 		if not game_over:
 			if $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
 				game_over = true
-				$C2/Display/FancyText.bbcode_text = "[center]NOOOOO~[/center]"
+				$C2/Display/FancyText.bbcode_text = "[center][wave]NOOOOO~[/wave][/center]"
 				stop_game()
 			
 		if not game_over and level_start: 

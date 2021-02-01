@@ -9,10 +9,8 @@ func setName(cutName):
 	cutscene_name = cutName
 
 var convo_list = [
-	"...was that a gun?",
-	"Grandma: . . .surely you jest. So.",
-	"Grandma: Did you manage to find--",
-	"It's right behind me!!!"
+	"Granny: Who goes there?",
+	"Adventurer: Woah woah Granny I’ve found your Fluffy for you, calm down."
 ]
 var convo_index = 0
 

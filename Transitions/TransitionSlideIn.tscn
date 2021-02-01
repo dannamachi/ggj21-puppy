@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/cutoff = 0.0
+shader_param/cutoff = 1.0
 shader_param/smooth_size = 0.35
 shader_param/mask = ExtResource( 1 )
 

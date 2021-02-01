@@ -72,7 +72,7 @@ func _physics_process(delta):
 			if not is_on_floor() and Input.is_action_just_pressed("ui_right"):
 				velocity.x += WALK_SPEED
 			if is_on_floor() and Input.is_action_pressed("ui_left"):
-				velocity.x -= WALK_SPEED
+				velocity.x -= WALK_SPEED * 1.5
 			if not is_on_floor() and Input.is_action_just_pressed("ui_left"):
 				velocity.x -= WALK_SPEED
 				
