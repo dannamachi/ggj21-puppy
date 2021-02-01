@@ -11,7 +11,7 @@
 [ext_resource path="res://Items/Bat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Items/GroundPiece.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Transitions/TransitionSlideIn.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/wall/GameJamCavePan.png" type="Texture" id=12]
+[ext_resource path="res://assets/wall/GameJamCavePan_Neon.png" type="Texture" id=12]
 [ext_resource path="res://Transitions/TransitionSlideOut.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/Rock.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/wall/transition.png" type="Texture" id=15]
@@ -87,15 +87,15 @@ transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
 
 [node name="ParallaxLayerCave" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1, 0 )
-motion_mirroring = Vector2( 2564, 0 )
+motion_mirroring = Vector2( 3200, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerCave"]
-position = Vector2( -4.33681e-19, -32 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 0, 16 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 2564, 288 )
+region_rect = Rect2( 0, 0, 3200, 360 )
 
 [node name="TransitionAddon" type="ParallaxBackground" parent="."]
 layer = 1
@@ -119,11 +119,10 @@ region_rect = Rect2( 0, 0, 2564, 288 )
 motion_scale = Vector2( 1, 0 )
 
 [node name="Sprite" type="Sprite" parent="TransitionAddon/ParallaxLayerForest"]
-position = Vector2( 1280, 0 )
+position = Vector2( 1280, 16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 15 )
 centered = false
-region_rect = Rect2( 0, 0, 1280, 288 )
 
 [node name="C1" type="CanvasLayer" parent="."]
 
@@ -308,7 +307,7 @@ wait_time = 60.0
 one_shot = true
 
 [node name="SwitchTimer" type="Timer" parent="."]
-wait_time = 4.2
+wait_time = 6.4
 one_shot = true
 [connection signal="timeout" from="C2/GroundGenerator/SpawnTimer" to="C2/GroundGenerator" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="C2/EnviGenerator/SpawnTimer" to="C2/EnviGenerator" method="_on_SpawnTimer_timeout"]
