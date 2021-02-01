@@ -28,12 +28,15 @@ __meta__ = {
 [node name="C1" type="CanvasLayer" parent="."]
 
 [node name="Title" type="TextureRect" parent="C1"]
-margin_left = 128.0
-margin_top = 37.0
-margin_right = 448.0
-margin_bottom = 101.0
-rect_scale = Vector2( 1.99893, 2.25603 )
+margin_left = 208.0
+margin_top = 56.0
+margin_right = 528.0
+margin_bottom = 120.0
+rect_scale = Vector2( 1.14086, 1.3759 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Play" type="Label" parent="C1"]
 margin_left = 162.0
