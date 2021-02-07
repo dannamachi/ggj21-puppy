@@ -66,6 +66,8 @@ func _physics_process(delta):
 			#AutoRun
 			if is_on_floor():
 				velocity.x = BASE_RUNNING
+				if position.y < 266 and not is_menu:
+					velocity.x += WALK_SPEED
 			#LeftRight
 			if is_on_floor() and Input.is_action_pressed("ui_right"):
 				velocity.x += WALK_SPEED
@@ -127,7 +129,7 @@ func _process(delta):
 				elif currPlay == "landing":
 					landingTime -= 1
 					if landingTime == 0:
-						if not is_menu and position.y > 266:
+						if not is_menu:
 							toPlay = "running"
 						else:
 							toPlay = "standing"
