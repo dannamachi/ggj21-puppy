@@ -182,16 +182,13 @@ script = ExtResource( 17 )
 Random = ExtResource( 18 )
 
 [node name="SpawnPoint" type="Position2D" parent="C2/EnviGenerator"]
-position = Vector2( 664, 256 )
+position = Vector2( 664, 258 )
 
 [node name="SpawnPoint2" type="Position2D" parent="C2/EnviGenerator"]
-position = Vector2( 824, 272 )
+position = Vector2( 824, 274 )
 
 [node name="SpawnTimer" type="Timer" parent="C2/EnviGenerator"]
 wait_time = 6.0
-
-[node name="Random" parent="C2/EnviGenerator" instance=ExtResource( 18 )]
-position = Vector2( 664, 256 )
 
 [node name="ObstacleGenerator" type="Node2D" parent="C2"]
 script = ExtResource( 6 )
@@ -199,10 +196,10 @@ Rock = ExtResource( 14 )
 BigRock = ExtResource( 8 )
 
 [node name="SpawnPoint" type="Position2D" parent="C2/ObstacleGenerator"]
-position = Vector2( 808, 288 )
+position = Vector2( 808, 290 )
 
 [node name="SpawnPoint2" type="Position2D" parent="C2/ObstacleGenerator"]
-position = Vector2( 824, 272 )
+position = Vector2( 824, 274 )
 
 [node name="SpawnTimer" type="Timer" parent="C2/ObstacleGenerator"]
 wait_time = 2.0
