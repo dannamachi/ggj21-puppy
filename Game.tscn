@@ -216,7 +216,7 @@ script = ExtResource( 3 )
 Bat = ExtResource( 9 )
 
 [node name="QueueTimer" type="Timer" parent="C2/BatGenerator"]
-wait_time = 0.7
+wait_time = 1.5
 
 [node name="SpawnTimer" type="Timer" parent="C2/BatGenerator"]
 wait_time = 4.0

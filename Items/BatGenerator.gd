@@ -37,7 +37,7 @@ func spawn_bats(num=1):
 
 
 func _on_SpawnTimer_timeout():
-	$SpawnTimer.wait_time = 4 + rand_range(-3.0, 3.0)
+	$SpawnTimer.wait_time = 10 + rand_range(-1.0, 3.0)
 	spawn_bats(randi() % 5 + 1)
 	
 
@@ -49,7 +49,7 @@ func _on_QueueTimer_timeout():
 	var playerPosX = get_node("../Player").position.x
 	var playerPosY = get_node("../Player").position.y
 	bat.look_at(Vector2(playerPosX, playerPosY))
-	bat.rotate(rand_range(-PI / 6, PI / 6))
+	bat.rotate(rand_range(-PI / 12, PI / 12))
 	var velo = Vector2(BAT_SPEED, 0).rotated(bat.rotation)
 	if sprite_type == "BAT":
 		bat.rotation = -PI / 2
@@ -58,5 +58,5 @@ func _on_QueueTimer_timeout():
 	bat_list.pop_front()
 	if len(bat_list) == 0:
 		$QueueTimer.stop()
-		$QueueTimer.wait_time = 0.3 + rand_range(-0.2, 0.2)
+		$QueueTimer.wait_time = 1 + rand_range(0.0, 1.0)
 		time_start = false
