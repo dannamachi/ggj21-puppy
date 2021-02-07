@@ -20,7 +20,7 @@ func _on_SpawnTimer_timeout():
 	$SpawnTimer.wait_time = 3 + rand_range(-0.3, 2.3)
 	
 	var rock
-	if randi() % 3 == 0:
+	if randi() % 10 == 0:
 		rock = BigRock.instance()
 		rock.position = $SpawnPoint2.position
 	else:

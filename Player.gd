@@ -17,6 +17,7 @@ var velocity = Vector2(0,0)
 var base_displacement = 300
 var jump_mult = 1.0
 var high_force = 1.0
+var gravity
 
 #FineTuningHit
 export var HIT_IMMUNE = 15
@@ -29,9 +30,9 @@ var hit_immu = 15
 
 #FineTuningMovement
 export var BASE_RUNNING = 0
-export var GRAVITY = 900
+export var GRAVITY = 1000
 export var WALK_SPEED = 150
-export var JUMP_SPEED = 550
+export var JUMP_SPEED = 600
 export var BACKGROUND_OFFSET_MULT = 0.001
 
 
@@ -83,7 +84,11 @@ func _physics_process(delta):
 				velocity.y = -JUMP_SPEED
 			
 			#Gravity
-			velocity.y += delta * jump_mult * GRAVITY * high_force
+			if velocity.y > 0:
+				gravity = GRAVITY + 300
+			else:
+				gravity = GRAVITY
+			velocity.y += delta * jump_mult * gravity * high_force
 		
 			#ExtendedJump
 			if velocity.y < 0:
@@ -96,7 +101,11 @@ func _physics_process(delta):
 			if hit_immu == 0:
 				is_hit = false
 			#Gravity
-			velocity.y += delta * GRAVITY * high_force
+			if velocity.y > 0:
+				gravity = GRAVITY + 300
+			else:
+				gravity = GRAVITY
+			velocity.y += delta * gravity * high_force
 				
 		
 		#ApplyVelo
