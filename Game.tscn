@@ -300,7 +300,7 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 120.0
 one_shot = true
 
 [node name="SwitchTimer" type="Timer" parent="."]

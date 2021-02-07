@@ -3,7 +3,7 @@ extends Node2D
 signal game_end(gameResult)
 
 var game_over = false
-var num_time_bar = 20
+var num_time_bar = 9
 var bar_interval = 0
 var time_left = 0
 var level_start = false
@@ -36,7 +36,7 @@ var threshold_line_list = [
 	"Adventurer: If I don't make it coming this far I'll--"
 ]
 
-export var LEVEL_TIME = 60
+export var LEVEL_TIME = 120
 
 
 # Called when the node enters the scene tree for the first time.
@@ -100,7 +100,7 @@ func _process(delta):
 			
 			#TextUpdate
 			for i in range(len(threshold_time_list)):
-				if time_left >= threshold_time_list[i] - 7:
+				if (LEVEL_TIME - time_left) < (i + 1) * bar_interval:
 					$C2/Display/FancyText.bbcode_text = "[center]%s[/center]" % threshold_line_list[i]
 					break
 	
