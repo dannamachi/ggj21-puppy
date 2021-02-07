@@ -10,6 +10,7 @@ var level_start = false
 var progressText = "%d km left"
 var is_switching = false
 var stop_playing_cave = false
+var switched_ground = false
 
 var threshold_time_list = [
 	60,
@@ -71,10 +72,12 @@ func _process(delta):
 			$TransitionAddon.scroll_offset.x -= ($C2/Player.base_displacement + $C2/Player.velocity.x * $C2/Player.BACKGROUND_OFFSET_MULT) * delta
 			if $TransitionAddon.scroll_offset.x < -4000 and not stop_playing_cave:
 				$TransitionAddon/ParallaxLayerForest2.show()
+				stop_playing_cave = true
+			if $TransitionAddon.scroll_offset.x < -6000 and not switched_ground:
 				$C2/GroundGenerator.ground_type = "FOREST"
 				$C2/BatGenerator.sprite_type = "OWL"
 				$C2/ObstacleGenerator.sprite_type = "FOREST"
-				stop_playing_cave = true
+				switched_ground = true
 				
 	#ShowProgress
 	if level_start:
