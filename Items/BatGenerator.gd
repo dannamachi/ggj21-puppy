@@ -51,6 +51,8 @@ func _on_QueueTimer_timeout():
 	bat.look_at(Vector2(playerPosX, playerPosY))
 	bat.rotate(rand_range(-PI / 6, PI / 6))
 	var velo = Vector2(BAT_SPEED, 0).rotated(bat.rotation)
+	if sprite_type == "BAT":
+		bat.rotation = -PI / 2
 	bat.set_velo(velo.x, velo.y)
 	#UpdateQueue
 	bat_list.pop_front()
