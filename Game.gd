@@ -74,7 +74,7 @@ func _process(delta):
 				$TransitionAddon/ParallaxLayerForest2.show()
 				stop_playing_cave = true
 			if $TransitionAddon.scroll_offset.x < -6000 and not switched_ground:
-				$C2/GroundGenerator.ground_type = "FOREST"
+				$C2/GroundGenerator.set_ground_type("FOREST")
 				$C2/BatGenerator.sprite_type = "OWL"
 				$C2/ObstacleGenerator.sprite_type = "FOREST"
 				switched_ground = true
@@ -82,8 +82,13 @@ func _process(delta):
 	#ShowProgress
 	if level_start:
 		if not game_over:
-			if $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
+			#CheckDead
+			if $C2/Player.position.y > 300:
 				game_over = true
+			#elif $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
+			#	game_over = true
+			#StopGame
+			if game_over: 
 				$C2/Display/FancyText.bbcode_text = "[center][wave]NOOOOO~[/wave][/center]"
 				stop_game()
 			

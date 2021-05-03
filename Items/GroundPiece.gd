@@ -10,6 +10,7 @@ var sprite_dict = {
 	"FOREST"  : load("res://assets/tile_forest.png")
 }
 var in_screen = false
+var listIndex = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,9 @@ func _ready():
 	
 func set_static():
 	is_static = true
+	
+func set_list_index(num):
+	listIndex = num
 	
 func set_sprite_type(Sname="CAVE"):
 	if Sname in sprite_dict:
@@ -29,6 +33,9 @@ func set_sprite_type(Sname="CAVE"):
 		else:
 			$Grass.hide()
 
+func getWidth():
+	return 96
+	#return $VisibilityNotifier2D.rect.w
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,7 +47,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 	if not is_static and in_screen:
 		#emit_signal("escape_scene")
 		#yield(get_tree().create_timer(0.3), "timeout")
-		queue_free()
+		#queue_free()
+		pass
 
 
 
