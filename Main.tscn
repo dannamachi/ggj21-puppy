@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Transitions/TransitionSlideIn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Transitions/TransitionTierIn.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Transitions/Transitions.gd" type="Script" id=9]
+[ext_resource path="res://assets/sfx/scream_then_bite.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fadein"
@@ -64,3 +65,6 @@ volume_db = -16.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Music"]
 anims/fadein = SubResource( 1 )
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )

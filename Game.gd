@@ -85,8 +85,8 @@ func _process(delta):
 			#CheckDead
 			if $C2/Player.position.y > 300:
 				game_over = true
-			#elif $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
-			#	game_over = true
+			elif $C2/Player.position.x <= $C2/EatenWall/LastPos.position.x:
+				game_over = true
 			#StopGame
 			if game_over: 
 				$C2/Display/FancyText.bbcode_text = "[center][wave]NOOOOO~[/wave][/center]"

@@ -113,6 +113,7 @@ func on_end_from_cuts(cutName):
 
 func on_game_end(gameResult):
 	if gameResult:
+		$GameOver.play()
 		$Transitions.switch_red()
 	cover_screen()
 	yield($Transitions, "transition_out_done")

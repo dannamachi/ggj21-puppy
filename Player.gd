@@ -43,6 +43,7 @@ func _ready():
 
 func on_being_hit():
 	if not is_hit:
+		get_node("../../HurtEffect").play()
 		is_hit = true
 		hit_immu = HIT_IMMUNE
 		if not is_on_floor():
