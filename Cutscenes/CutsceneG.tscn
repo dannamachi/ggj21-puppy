@@ -10,22 +10,22 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 128, 128, 32, 64 )
+region = Rect2( 0, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 96, 64, 32, 64 )
+region = Rect2( 32, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 64, 64, 32, 64 )
+region = Rect2( 64, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 64, 32, 64 )
+region = Rect2( 96, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
@@ -35,52 +35,52 @@ region = Rect2( 128, 0, 32, 64 )
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 64 )
+region = Rect2( 0, 64, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 32, 64 )
+region = Rect2( 32, 64, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 32, 64 )
+region = Rect2( 64, 64, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 96, 0, 32, 64 )
+region = Rect2( 96, 64, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 32, 64, 32, 64 )
+region = Rect2( 128, 64, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 128, 64, 32, 64 )
+region = Rect2( 0, 128, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 128, 32, 64 )
+region = Rect2( 32, 128, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 32, 128, 32, 64 )
+region = Rect2( 64, 128, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 64, 128, 32, 64 )
+region = Rect2( 96, 128, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 96, 128, 32, 64 )
+region = Rect2( 128, 128, 32, 64 )
 
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
@@ -89,14 +89,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
-"loop": false,
-"name": "gunback",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 5 ), SubResource( 4 ), SubResource( 10 ), SubResource( 3 ), SubResource( 2 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 1 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": false,
 "name": "gunning",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 9 ), SubResource( 8 ), SubResource( 6 ), SubResource( 5 ), SubResource( 1 ) ],
+"loop": false,
+"name": "gunback",
 "speed": 5.0
 } ]
 
@@ -199,9 +199,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Display"]
-margin_left = 200.0
+margin_left = 50.0
 margin_top = 344.0
-margin_right = 440.0
+margin_right = 590.0
 margin_bottom = 358.0
 text = "HELP!!!"
 align = 1
