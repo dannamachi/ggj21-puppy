@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Lost Puppy Wanted"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Game_icon.png"
 
 [display]
 
