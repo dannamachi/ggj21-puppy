@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/wall/bg_forest.png" type="Texture" id=1]
 [ext_resource path="res://assets/items/monster_run_V1.png" type="Texture" id=2]
@@ -18,7 +18,9 @@
 [ext_resource path="res://fonts/Sanitrixie.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://Items/EnviGenerator.gd" type="Script" id=17]
 [ext_resource path="res://Items/Random.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Items/PitRock.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/sfx/game_ow.wav" type="AudioStream" id=20]
+[ext_resource path="res://Items/LevelRock.tscn" type="PackedScene" id=21]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -285,6 +287,8 @@ wait_time = 6.0
 script = ExtResource( 6 )
 Rock = ExtResource( 14 )
 BigRock = ExtResource( 8 )
+LevelRock = ExtResource( 21 )
+PitRock = ExtResource( 19 )
 
 [node name="SpawnPoint" type="Position2D" parent="C2/ObstacleGenerator"]
 position = Vector2( 808, 291 )
