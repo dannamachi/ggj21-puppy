@@ -1,2 +1,2 @@
-## Lost Puppy Wanted (name tbc)
+## Lost Puppy Wanted
 Entry for Global Game Jam 2021
